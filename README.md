@@ -59,6 +59,7 @@ plt.show()
 ```
 * Output image ![](https://user-images.githubusercontent.com/41427089/103520754-aaf5ce80-4e9d-11eb-99f2-fc3e24bc321d.png)
 ### Negative reviews word cloud
+
 ```
 #creating negative reviews string
 negative_reviews=[]
@@ -87,13 +88,11 @@ plt.show()
 ```
 #detecting review language
 languages = []
-
 # Loop over the sentences in the list and detect their language
 for index,row in data.iterrows():
     languages.append(detect_langs(row['review']))
 languages = [str(lang).split(':')[0][1:] for lang in languages]
 data['languages']=languages
-
 #keeping only english language reviews
 data=data[data['languages']!='nl']
 data=data[data['languages']!='id']
@@ -107,7 +106,6 @@ tknzr = TweetTokenizer()
 tokenize_review = [tknzr.tokenize(item) for item in data.review]
 cleaned_tokenized_reviews = [[word for word in item if word.isalnum()] for item in tokenize_review]
 cleaned_tokenized_reviews = [[word for word in item if word.isalpha()] for item in tokenize_review]
-
 set_words = set(words.words())
 cleaned_tokenized_reviews = [[word for word in item if word in set_words] for item in cleaned_tokenized_reviews]
 ```
@@ -115,7 +113,6 @@ cleaned_tokenized_reviews = [[word for word in item if word in set_words] for it
 ```
 stop_words = set(stopwords.words("english"))
 stopwords_added=stop_words.union(['films', 'film','br','movie','movies','character','one','story','see'])
-
 stopwords_removed_tokenize_reviews=[[word for word in item if word not in stopwords_added]for item in cleaned_tokenized_reviews]
 str1=" "
 converted_tokenized_reviews=[str1.join(item) for item in stopwords_removed_tokenize_reviews]
@@ -155,7 +152,6 @@ X_test = sc.transform(X_test)
 log_reg = LogisticRegression().fit(X_train, y_train)
 # Predict the labels
 y_predicted = log_reg.predict(X_test)
-
 # Print accuracy score
 print('Accuracy on the test set: ', accuracy_score(y_test,y_predicted) * 100)
 ```
