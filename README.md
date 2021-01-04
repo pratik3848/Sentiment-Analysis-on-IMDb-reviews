@@ -67,7 +67,6 @@ for index, row in data.iterrows():
     negative_reviews.append(row['review'])
 neg=""
 neg=neg.join(negative_reviews)
-
 #word cloud without stop words
 my_cloud_negative_reviews = WordCloud(background_color='white').generate(neg)
 plt.imshow(my_cloud_negative_reviews, interpolation='bilinear') 
