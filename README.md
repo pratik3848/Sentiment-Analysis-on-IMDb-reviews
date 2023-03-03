@@ -1,6 +1,11 @@
 # Sentiment-Analysis-on-IMDb-reviews
 Sentiment Analysis using Logistic regression performed on IMDb movie reviews.
 
+## Tools and Technologies used
+  ### 1. Data Analysis and cleaning
+  ### 2. Python
+  ### 3. MSSQL
+
 # Required Libraries and Packages
 ```
 import numpy as np # linear algebra
